@@ -1,4 +1,4 @@
-.ContactEditor {
+.contactEditor {
     display: block;
     font-size: 20px;
     color: #010101;
@@ -7,17 +7,17 @@
     margin-right: auto;
 }
 
-.ContactEditor__form {
+.contactEditor__form {
     border: 1px solid #010101;
     padding-left: 20px;
     padding-bottom: 20px;
 }
 
-.ContactEditor__label {
+.contactEditor__label {
     display: block;
     margin-bottom: 20px;
 }
 
-.ContactEditor__name {
+.contactEditor__name {
     margin-bottom: 0;
 }

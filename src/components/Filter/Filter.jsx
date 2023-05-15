@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import './Filter.css';
+import css from './Filter.module.css';
 
 const Filter = ({ value, changeFilter }) => (
-        <label className="filter">
-            <p className="filter__filter">Find contacts by name</p>
+        <label className={css.filter}>
+            <p className={css.filter__filter}>Find contacts by name</p>
             <input
                 type='text'
                 value={value}

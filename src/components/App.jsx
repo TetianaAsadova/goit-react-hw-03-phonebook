@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
-import './App.css';
+import css from './App.module.css';
 
 class App extends Component {
   state = {
@@ -20,30 +20,48 @@ class App extends Component {
     // console.log(`text`, text);
     // console.log(`phone`, phone);
 
-    const contact = {
+    const cont = {
       id: nanoid(),
       name: text,
       number: phone, 
     };
     // console.log(`contact1`, contact);
     const textName = text.toLowerCase();
-    // console.log(`i=`, this.state.contacts.length);
-    for (let i = 0; i < this.state.contacts.length; i = + 1) {
-      if (this.state.contacts[i].name.toLowerCase() === textName) {
-        alert(`${text} is already in contacts.`);
-        return;
-      } else {
-        // console.log(`contact2`, contact);
-
-        this.setState(prevState => ({
-          contacts: [contact, ...prevState.contacts],
-        }));
-        // console.log(`contactsAdd`, this.state);
+    // console.log(`textName`, textName);
     
-        return;
-      }
+
+    const hasName = this.state.contacts.some(
+      contact => contact.name.toLowerCase() === textName
+    );
+    if (hasName) {
+      alert(`${text} is already in contacts.`);
+      return;
     }
-  }
+
+    this.setState(prevState => ({
+      contacts: [cont, ...prevState.contacts],
+    }));
+
+    // console.log(`contactsAdd`, this.state);
+
+
+    // for (let i = 0; i < this.state.contacts.length; i =+ 1) {
+    //   console.log(`for i=`, i);
+    //   console.log(`this.state.contacts[i].name.toLowerCase()`, this.state.contacts[i].name.toLowerCase());
+
+    //   if (this.state.contacts[i].name.toLowerCase() === textName) {
+    //     alert(`${text} is already in contacts.`);
+    //     return;
+    //   }
+    // }  
+  //       // console.log(`contact2`, contact);
+
+  //       this.setState(prevState => ({
+  //         contacts: [contact, ...prevState.contacts],
+  //       }));
+  //       // console.log(`contactsAdd`, this.state);
+  //   return;
+   }
 
   changeFilter = event => {
     this.setState({ filter: event.currentTarget.value });
@@ -101,7 +119,7 @@ class App extends Component {
     const { filter } = this.state;  
     const visibleContacts = this.getConstVisibleContacts();
     return (
-      <div className='App'>
+      <div className={css.app}>
         <h1>Phonebook</h1>
 
         <ContactForm onSubmitEditor={this.addContact} />
